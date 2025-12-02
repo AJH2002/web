@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jasa Pembuatan Website Profesional - Website Modern, Responsif, dan User Friendly untuk Bisnis Anda">
+    <title>Jasa Pembuatan Website Profesional | WebDev Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+            --bg-white: #ffffff;
+            --bg-gray: #f9fafb;
+            --border: #e5e7eb;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary-dark);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, #f9fafb, #ffffff);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: var(--bg-white);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .reason-card {
+            background: var(--bg-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .reason-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .reason-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .reason-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--bg-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: white;
+        }
+
+        .benefits-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefits-text h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .benefits-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            color: var(--text-dark);
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+
+        /* Process Section */
+        .process {
+            background: var(--bg-gray);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .process-step p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-info strong {
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+
+            .process-steps {
+                flex-direction: column;
+            }
+
+            nav {
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">WebDev Pro</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#why-choose">Kenapa Kami</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#benefits">Manfaat</a></li>
+                <li><a href="#process">Proses</a></li>
+                <li><a href="#contact" class="btn-nav">Konsultasi Gratis</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Jasa Pembuatan Website <span class="highlight">Profesional</span></h1>
+            <p>Website modern, cepat, dan User Friendly untuk membantu bisnis Anda berkembang di era digital</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
+                <a href="#services" class="btn btn-secondary">Lihat Layanan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section why-choose" id="why-choose">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Kenapa Harus Memilih Kami?</h2>
+                <p>Alasan kuat mengapa Anda harus mempercayakan pembuatan website kepada kami</p>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">🚀</div>
+                    <h3>Website Super Cepat</h3>
+                    <p>Optimasi performa untuk loading time yang optimal. Website cepat meningkatkan pengalaman pengguna dan ranking di Google.</p>
+                </div>
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">📱</div>
+                    <h3>100% Responsif</h3>
+                    <p>Tampil sempurna di semua perangkat - desktop, tablet, dan smartphone. Desain mobile-first untuk era digital sekarang.</p>
+                </div>
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">👥</div>
+                    <h3>User Friendly</h3>
+                    <p>Website dengan antarmuka yang mudah digunakan dan intuitif. Desain yang memprioritaskan pengalaman pengguna yang nyaman dan menyenangkan.</p>
+                </div>
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">🎨</div>
+                    <h3>Desain Modern</h3>
+                    <p>Desain yang tidak hanya indah, tapi juga mudah digunakan. Membuat bisnis Anda terlihat profesional dan terpercaya.</p>
+                </div>
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">💰</div>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Kualitas premium dengan harga kompetitif. Paket website sesuai kebutuhan dan budget Anda, tanpa mengorbankan kualitas.</p>
+                </div>
+                <div class="reason-card fade-in">
+                    <div class="reason-icon">🛡️</div>
+                    <h3>Support Berkelanjutan</h3>
+                    <p>Dukungan purna jual lengkap. Update berkala, backup rutin, dan support jika ada masalah - semua tersedia untuk Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Layanan Kami</h2>
+                <p>Berbagai jenis website sesuai kebutuhan bisnis Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌐</div>
+                    <h3>Company Profile</h3>
+                    <p>Website profesional untuk memperkenalkan perusahaan dan meningkatkan kredibilitas bisnis Anda</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛒</div>
+                    <h3>E-Commerce</h3>
+                    <p>Toko online lengkap dengan keranjang, checkout, dan payment gateway untuk jual produk online</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📝</div>
+                    <h3>Landing Page</h3>
+                    <p>Halaman landing yang dirancang khusus untuk meningkatkan konversi dan kampanye marketing</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏢</div>
+                    <h3>Website Custom</h3>
+                    <p>Website dengan fitur khusus sesuai kebutuhan unik bisnis Anda, dibuat dari nol sesuai permintaan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text fade-in">
+                    <h2>Manfaat Website untuk Bisnis</h2>
+                    <p>Di era digital, memiliki website adalah investasi penting untuk kesuksesan bisnis Anda</p>
+                    <ul class="benefits-list">
+                        <li>Meningkatkan kredibilitas dan kepercayaan pelanggan</li>
+                        <li>Jangkauan pasar lebih luas, bisa diakses 24/7 dari mana saja</li>
+                        <li>Marketing yang efektif dan cost-efficient</li>
+                        <li>Showcase produk dan layanan dengan detail lengkap</li>
+                        <li>Customer service 24/7 melalui informasi dan contact form</li>
+                        <li>Membangun brand identity yang kuat dan profesional</li>
+                        <li>Keunggulan kompetitif dibanding bisnis tanpa website</li>
+                        <li>Analytics untuk memahami perilaku pengunjung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process" id="process">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Proses Pengerjaan</h2>
+                <p>Langkah-langkah jelas dan transparan dari awal hingga website siap digunakan</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Konsultasi</h3>
+                    <p>Diskusikan kebutuhan dan tujuan website. Kami berikan saran terbaik untuk solusi yang tepat.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Perencanaan</h3>
+                    <p>Rancang struktur dan desain sesuai brand Anda. Mockup design untuk approval sebelum development.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Pembuatan</h3>
+                    <p>Development website dengan teknologi terbaru. Update progress berkala selama proses pengerjaan.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h3>Review & Revisi</h3>
+                    <p>Uji semua fitur dan fungsionalitas. Anda bisa review dan request revisi sebelum launch.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">5</div>
+                    <h3>Launch & Support</h3>
+                    <p>Website go live dan siap digunakan! Training dan support tersedia untuk pengelolaan website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta" id="contact">
+        <div class="container">
+            <h2>Siap Membuat Website Profesional?</h2>
+            <p>Mulai konsultasi gratis sekarang dan wujudkan website impian untuk bisnis Anda</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/6281234567890?text=Halo, saya tertarik dengan jasa pembuatan website" class="btn btn-primary" target="_blank">Konsultasi WhatsApp</a>
+                <a href="mailto:info@webdevpro.com" class="btn btn-secondary">Kirim Email</a>
+            </div>
+            <div class="contact-info">
+                📞 <strong>Telepon:</strong> +62 812-3456-7890 | 
+                ✉️ <strong>Email:</strong> info@webdevpro.com
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Kami</h3>
+                <p>Tim profesional yang berkomitmen memberikan website berkualitas tinggi untuk membantu kesuksesan bisnis Anda di era digital.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Layanan</h3>
+                <p><a href="#services">Company Profile</a></p>
+                <p><a href="#services">E-Commerce</a></p>
+                <p><a href="#services">Landing Page</a></p>
+                <p><a href="#services">Website Custom</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>📧 info@webdevpro.com</p>
+                <p>📱 +62 812-3456-7890</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <p><a href="#home">Beranda</a></p>
+                <p><a href="#why-choose">Kenapa Kami</a></p>
+                <p><a href="#benefits">Manfaat</a></p>
+                <p><a href="#process">Proses</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WebDev Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            });
+        }
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
